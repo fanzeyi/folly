@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <optional>
+
 #include <folly/ExceptionWrapper.h>
 #include <folly/experimental/coro/Mutex.h>
 #include <folly/experimental/coro/detail/Barrier.h>
@@ -565,7 +567,7 @@ auto collectAllWindowed(InputRange awaitables, std::size_t maxConcurrency)
   const auto context = RequestContext::saveContext();
 
   try {
-    auto lock = co_await mutex.co_scoped_lock();
+    auto lock = co_await co_viaIfAsync(executor.get_alias(), mutex.co_scoped_lock());
 
     while (!iterationException && iter != iterEnd &&
            workerTasks.size() < maxConcurrency) {
@@ -582,7 +584,7 @@ auto collectAllWindowed(InputRange awaitables, std::size_t maxConcurrency)
 
       RequestContext::setContext(context);
 
-      lock = co_await mutex.co_scoped_lock();
+      lock = co_await co_viaIfAsync(executor.get_alias(), mutex.co_scoped_lock());
     }
   } catch (const std::exception& ex) {
     // Only a fatal error if we failed to create any worker tasks.

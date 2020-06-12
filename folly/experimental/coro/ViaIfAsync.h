@@ -148,7 +148,7 @@ class ViaCoroutine {
   }
 
   static ViaCoroutine create(folly::Executor::KeepAlive<> executor) {
-    co_return;
+    return ViaCoroutine::promise_type{executor}.get_return_object();
   }
 
   static ViaCoroutine createInline() noexcept {

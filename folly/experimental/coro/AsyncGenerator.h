@@ -40,6 +40,10 @@ class AsyncGenerator;
 
 namespace detail {
 
+// bug fix: https://stackoverflow.com/questions/46104002/why-cant-this-enable-if-function-template-be-specialized-in-vs2017
+template <typename V, typename Ref>
+bool constexpr is_msvc_bug_t = (!std::is_reference_v<Ref> && std::is_convertible_v<V&&, Ref>);
+
 template <typename Reference, typename Value>
 class AsyncGeneratorPromise {
   class YieldAwaiter {
@@ -97,10 +101,7 @@ class AsyncGeneratorPromise {
   // temporary that results from an implicit conversion.
   template <
       typename U,
-      std::enable_if_t<
-          !std::is_reference_v<Reference> &&
-              std::is_convertible_v<U&&, Reference>,
-          int> = 0>
+      std::enable_if_t<is_msvc_bug_t<U, Reference>, int> = 0>
   YieldAwaiter yield_value(U&& value) noexcept(
       std::is_nothrow_constructible_v<Reference, U>) {
     DCHECK(!hasValue_);

@@ -81,3 +81,9 @@ builder = boost
 --with-timer
 --with-type_erasure
 --with-wave
+abi=ms
+address-model=64 
+architecture=x86
+binary-format=pe
+threading=multi
+toolset=msvc

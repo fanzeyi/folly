@@ -21,6 +21,7 @@ fmt
 lz4
 snappy
 zstd
+range-v3
 # no openssl or zlib in the linux case, why?
 # these are usually installed on the system
 # and are the easiest system deps to pull in.

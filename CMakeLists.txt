@@ -621,6 +621,38 @@ if (BUILD_TESTS)
     DIRECTORY experimental/io/test/
       TEST fs_util_test SOURCES FsUtilTest.cpp
 
+    DIRECTORY experimental/coro/test/
+      TEST coro_accumulate_test SOURCES AccumulateTest.cpp
+      TEST coro_async_generator_test SOURCES AsyncGeneratorTest.cpp
+      TEST coro_async_pipe_test SOURCES AsyncPipeTest.cpp
+      TEST coro_async_scope_test SOURCES AsyncScopeTest.cpp
+      TEST coro_baton_test SOURCES BatonTest.cpp
+      # TEScoro_T blocking_wait_benchmark SOURCES BlockingWaitBenchmark.cpp
+      TEST coro_blocking_wait_test SOURCES BlockingWaitTest.cpp
+      # TEScoro_T collect_all_benchmark SOURCES CollectAllBenchmark.cpp
+      TEST coro_collect_test SOURCES CollectTest.cpp
+      TEST coro_concat_test SOURCES ConcatTest.cpp
+      # TEScoro_T coro_benchmark_allocator SOURCES CoroBenchmarkAllocator.cpp
+      # TEScoro_T coro_benchmark_n_r_v_o SOURCES CoroBenchmarkNRVO.cpp
+      TEST coro_coro_test SOURCES CoroTest.cpp
+      TEST coro_current_executor_test SOURCES CurrentExecutorTest.cpp
+      TEST coro_dematerialize_test SOURCES DematerializeTest.cpp
+      TEST coro_error_test SOURCES ErrorTest.cpp
+      TEST coro_future_util_test SOURCES FutureUtilTest.cpp
+      TEST coro_generator_test SOURCES GeneratorTest.cpp
+      TEST coro_gmock_helpers_test SOURCES GmockHelpersTest.cpp
+      TEST coro_inline_task_test SOURCES InlineTaskTest.cpp
+      TEST coro_materialize_test SOURCES MaterializeTest.cpp
+      TEST coro_merge_test SOURCES MergeTest.cpp
+      TEST coro_multiplex_test SOURCES MultiplexTest.cpp
+      TEST coro_mutex_test SOURCES MutexTest.cpp
+      TEST coro_shared_mutex_test SOURCES SharedMutexTest.cpp
+      # TEScoro_T task_benchmark SOURCES TaskBenchmark.cpp
+      TEST coro_task_test SOURCES TaskTest.cpp
+      TEST coro_traits_test SOURCES TraitsTest.cpp
+      TEST coro_transform_test SOURCES TransformTest.cpp
+      TEST coro_unbounded_queue_test SOURCES UnboundedQueueTest.cpp
+
     DIRECTORY external/farmhash/test/
       TEST farmhash_test SOURCES farmhash_test.cpp
 

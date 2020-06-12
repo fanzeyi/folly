@@ -120,6 +120,8 @@ function(apply_folly_compile_options_to_target THETARGET)
 
       /permissive- # Be mean, don't allow bad non-standard stuff (C++/CLI, __declspec, etc. are all left intact).
       /std:${MSVC_LANGUAGE_VERSION} # Build in the requested version of C++
+      /await
+      /Zc:__cplusplus
 
     PRIVATE
       /bigobj # Support objects with > 65k sections. Needed due to templates.

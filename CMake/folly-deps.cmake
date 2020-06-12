@@ -33,6 +33,7 @@ else()
 endif()
 set(Boost_USE_STATIC_LIBS "${FOLLY_BOOST_LINK_STATIC}")
 
+set(Boost_COMPILER -vc142)
 find_package(Boost 1.51.0 MODULE
   COMPONENTS
     context
@@ -227,6 +228,13 @@ if (NOT DEFINED fmt_CONFIG)
     find_package(fmt MODULE REQUIRED)
 endif()
 target_link_libraries(folly_deps INTERFACE fmt::fmt)
+
+find_package(range-v3 CONFIG)
+if (NOT DEFINED range-v3_CONFIG)
+    # Fallback on a normal search on the current system
+    find_package(range-v3 MODULE REQUIRED)
+endif()
+target_link_libraries(folly_deps INTERFACE range-v3::range-v3)
 
 list(REMOVE_DUPLICATES FOLLY_INCLUDE_DIRECTORIES)
 target_include_directories(folly_deps INTERFACE ${FOLLY_INCLUDE_DIRECTORIES})

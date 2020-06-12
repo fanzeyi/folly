@@ -130,7 +130,7 @@ struct tag_t {};
 #if __cplusplus >= 201703L
 
 template <typename... T>
-inline constexpr tag_t<T...> tag;
+inline constexpr tag_t<T...> tag = {};
 
 #endif
 

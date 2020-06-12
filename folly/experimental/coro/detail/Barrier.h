@@ -23,6 +23,8 @@
 #include <experimental/coroutine>
 #include <utility>
 
+#include <folly/experimental/coro/Portability.h>
+
 namespace folly {
 namespace coro {
 namespace detail {
@@ -56,7 +58,7 @@ class Barrier {
     if (oldCount == 1) {
       return std::exchange(continuation_, {});
     } else {
-      return std::experimental::noop_coroutine();
+      return folly::experimental::coro::noop_coroutine();
     }
   }
 

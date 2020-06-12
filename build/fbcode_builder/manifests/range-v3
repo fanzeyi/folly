@@ -1,0 +1,20 @@
+[manifest]
+name = range-v3
+
+[download]
+url = https://github.com/ericniebler/range-v3/archive/0.10.0.zip
+sha256 = 4884dc4f62cb9fdc3b803cb44a862448853146f6a26bc37c6f3d53d786168a87
+
+[build]
+builder = cmake
+subdir = range-v3-0.10.0
+
+[dependencies]
+boost
+
+[cmake.defines]
+RANGE_V3_EXAMPLES=OFF
+RANGE_V3_TESTS=OFF
+RANGE_V3_PERF=OFF
+RANGE_V3_DOCS=OFF
+RANGES_VERBOSE_BUILD=ON
